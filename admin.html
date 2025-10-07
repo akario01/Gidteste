@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel de Administração</title>
-    
     <link rel="manifest" href="manifest.json">
-    
     <link rel="stylesheet" href="admin-style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <!-- Tela de Login -->
+    <!-- ... (código do login e dashboard que não muda) ... -->
     <main id="login-section" class="container">
         <header>
             <img src="logo.jpg" alt="Logo da Barbearia" class="logo">
@@ -27,8 +25,6 @@
             </form>
         </section>
     </main>
-
-    <!-- O Novo Dashboard -->
     <div id="admin-dashboard" class="hidden">
         <nav class="sidebar">
             <div class="sidebar-header"><img src="logo.jpg" alt="Logo" class="sidebar-logo"></div>
@@ -40,9 +36,7 @@
             </ul>
             <div class="sidebar-footer"><button id="logout-button"><i class="fas fa-sign-out-alt"></i><span>Sair</span></button></div>
         </nav>
-
         <main class="main-content">
-            <!-- Seção 1: Dashboard (Visão Geral) -->
             <section id="dashboard-section" class="dashboard-section active-section">
                 <header class="main-header"><h1>Dashboard</h1><p>Bem-vindo! Aqui está um resumo do seu dia.</p></header>
                 <div class="stats-grid">
@@ -50,29 +44,19 @@
                     <div class="stat-card"><i class="fas fa-dollar-sign"></i><div class="stat-info"><span class="stat-value" id="stat-faturamento-dia">R$ 0,00</span><span class="stat-label">Faturamento do Dia</span></div></div>
                 </div>
                 <div class="content-box"><h2>Próximos Agendamentos</h2><div id="proximos-agendamentos-list"><p>Nenhum agendamento futuro.</p></div></div>
-                
                 <div class="content-box">
                     <h2>Lembretes de Hoje</h2>
-                    <div id="lembretes-list">
-                        <p>Nenhum agendamento hoje precisa de lembrete no momento.</p>
-                    </div>
+                    <div id="lembretes-list"><p>Nenhum agendamento hoje precisa de lembrete no momento.</p></div>
                 </div>
-
             </section>
-
-            <!-- Seção 2: Agenda Visual -->
             <section id="agenda-section" class="dashboard-section">
                  <header class="main-header"><h1>Agenda</h1><div class="agenda-controls"><input type="date" id="agenda-date-picker" class="input-field"><button id="add-appointment-btn" class="btn-primary"><i class="fas fa-plus"></i> Novo</button></div></header>
                 <div id="agenda-grid-container"></div>
             </section>
-
-            <!-- Seção 3: Clientes -->
             <section id="clientes-section" class="dashboard-section">
                 <header class="main-header"><h1>Clientes</h1><div class="clientes-controls"><input type="text" id="client-search-input" class="input-field" placeholder="Buscar cliente por nome..."><button id="add-new-client-btn" class="btn-primary"><i class="fas fa-user-plus"></i> Novo Cliente</button></div></header>
                 <div id="client-manager-list"></div>
             </section>
-
-            <!-- Seção 4: Financeiro -->
             <section id="financeiro-section" class="dashboard-section">
                 <header class="main-header"><h1>Relatório Financeiro</h1></header>
                 <div class="report-box">
@@ -88,8 +72,6 @@
             </section>
         </main>
     </div>
-
-    <!-- Modais -->
     <div id="modal-backdrop" class="hidden">
         <div id="modal-content">
             <div class="modal-header"><h3>Novo Agendamento</h3></div>
@@ -108,13 +90,16 @@
         </div>
     </div>
 
-    <!-- ✅✅✅ MODAL CORRIGIDO - ESTRUTURA FINAL ✅✅✅ -->
+    <!-- ✅✅✅ ESTRUTURA HTML FINAL E CORRETA DO MODAL ✅✅✅ -->
     <div id="client-profile-modal-backdrop" class="hidden">
         <div id="client-profile-modal-content">
             <div class="modal-header"><h3>Perfil do Cliente</h3></div>
             <form id="client-profile-form">
-                <div class="modal-body" id="client-profile-details">
-                    <!-- O conteúdo do formulário e do histórico será injetado aqui pelo JS -->
+                <div class="modal-body">
+                    <!-- Esqueleto do formulário -->
+                    <div id="client-form-fields"></div>
+                    <!-- Esqueleto do histórico -->
+                    <div id="client-history-container"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="delete-client-btn" class="btn-danger hidden">Excluir</button>
@@ -127,13 +112,12 @@
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- ... (código dos scripts que não muda) ... -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="config.js"></script>
     <script src="admin.js"></script>
-
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -145,7 +129,6 @@
             });
         }
     </script>
-
 </body>
 </html>
 <!-- FIM DO ARQUIVO -->
