@@ -1,0 +1,317 @@
+/* ===================================================================
+   ARQUIVO DE ESTILO (CSS) V7.4 - LAYOUT FINAL E BOTÃO LIMPAR HISTÓRICO
+   =================================================================== */
+
+/* --- Variáveis de Cor e Fontes --- */
+:root {
+    --cor-fundo-app: #121212;
+    --cor-fundo-painel: #1e1e1e;
+    --cor-fundo-cartao: #2a2a2a;
+    --cor-borda: #383838;
+    --cor-primaria: #c5a47e;
+    --cor-primaria-suave: rgba(197, 164, 126, 0.15);
+    --cor-texto-principal: #e0e0e0;
+    --cor-texto-secundario: #a0a0a0;
+    --cor-perigo: #e57373;
+    --cor-perigo-suave: rgba(229, 115, 115, 0.1);
+    --cor-sucesso: #81c784;
+    --cor-sucesso-suave: rgba(129, 199, 132, 0.15);
+    --cor-fundo-input: #333;
+    --cor-bloqueio: #424242;
+}
+
+/* --- Reset e Configurações Globais --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--cor-fundo-app);
+    color: var(--cor-texto-principal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: 600; color: var(--cor-texto-principal); }
+p { color: var(--cor-texto-secundario); }
+
+/* --- Tela de Login --- */
+#login-section { max-width: 400px; margin: 5% auto; text-align: center; }
+#login-section .logo { width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--cor-primaria); margin-bottom: 20px; cursor: pointer; }
+#login-section section { background-color: var(--cor-fundo-painel); padding: 40px; border-radius: 12px; border: 1px solid var(--cor-borda); }
+#login-section h2 { margin-bottom: 25px; font-size: 1.5rem; }
+#login-form { display: flex; flex-direction: column; gap: 15px; }
+#login-form .input-field { margin-bottom: 0; }
+
+/* --- Layout do Dashboard --- */
+#admin-dashboard { display: flex; height: 100vh; }
+
+/* --- Barra Lateral (Sidebar) --- */
+.sidebar { width: 240px; background-color: var(--cor-fundo-painel); border-right: 1px solid var(--cor-borda); display: flex; flex-direction: column; transition: width 0.3s ease; }
+.sidebar-header { padding: 20px; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid var(--cor-borda); }
+.sidebar-logo { width: 50px; height: 50px; border-radius: 50%; cursor: pointer; }
+.sidebar-menu { list-style: none; flex-grow: 1; padding-top: 20px; }
+.menu-item { display: flex; align-items: center; padding: 15px 25px; margin: 5px 10px; border-radius: 8px; cursor: pointer; color: var(--cor-texto-secundario); transition: background-color 0.2s ease, color 0.2s ease; }
+.menu-item i { font-size: 1.2rem; width: 30px; text-align: center; }
+.menu-item span { margin-left: 15px; font-weight: 500; }
+.menu-item:hover { background-color: var(--cor-fundo-cartao); color: var(--cor-texto-principal); }
+.menu-item.active { background-color: var(--cor-primaria); color: #fff; font-weight: 600; }
+.sidebar-footer { padding: 20px; border-top: 1px solid var(--cor-borda); }
+#logout-button { background: none; border: none; color: var(--cor-texto-secundario); font-family: var(--font-principal); font-size: 1rem; font-weight: 500; display: flex; align-items: center; width: 100%; padding: 10px; border-radius: 8px; cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease; }
+#logout-button:hover { color: var(--cor-perigo); background-color: var(--cor-perigo-suave); }
+#logout-button i { margin-right: 15px; font-size: 1.2rem; }
+
+/* --- Conteúdo Principal --- */
+.main-content { flex-grow: 1; padding: 30px; overflow-y: auto; height: 100vh; }
+.dashboard-section { display: none; }
+.dashboard-section.active-section { display: block; }
+.main-header { margin-bottom: 30px; }
+.main-header h1 { font-size: 2rem; font-weight: 700; }
+.main-header p { font-size: 1.1rem; color: var(--cor-texto-secundario); }
+.content-box { background-color: var(--cor-fundo-painel); padding: 25px; border-radius: 12px; border: 1px solid var(--cor-borda); margin-top: 30px; }
+.content-box h2 { margin-bottom: 20px; font-size: 1.3rem; }
+
+/* --- Estilos das Seções --- */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+.stat-card { background-color: var(--cor-fundo-painel); padding: 25px; border-radius: 12px; border: 1px solid var(--cor-borda); display: flex; align-items: center; gap: 20px; }
+.stat-card i { font-size: 2.5rem; color: var(--cor-primaria); }
+.stat-info .stat-value { display: block; font-size: 2rem; font-weight: 700; color: var(--cor-texto-principal); }
+.stat-info .stat-label { color: var(--cor-texto-secundario); }
+
+.agenda-controls, .clientes-controls { display: flex; gap: 15px; align-items: center; margin-top: 15px; }
+.agenda-controls .input-field, .clientes-controls .input-field { margin-bottom: 0; max-width: 200px; }
+.agenda-controls .btn-primary, .clientes-controls .btn-primary { padding: 12px 20px; font-size: 1rem; width: auto; }
+#agenda-grid-container { background-color: var(--cor-fundo-painel); padding: 20px; border-radius: 12px; border: 1px solid var(--cor-borda); margin-top: 20px; }
+.time-slot { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid var(--cor-borda); transition: background-color 0.2s; position: relative; }
+.time-slot:last-child { border-bottom: none; }
+.time-label { width: 80px; font-weight: 600; color: var(--cor-texto-secundario); }
+.appointment-block { flex-grow: 1; background-color: var(--cor-primaria-suave); border-left: 4px solid var(--cor-primaria); padding: 15px; border-radius: 8px; cursor: pointer; position: relative; }
+.appointment-block strong { font-weight: 600; }
+.appointment-block span { display: block; font-size: 0.9rem; color: var(--cor-texto-secundario); }
+.empty-slot { flex-grow: 1; padding: 15px; color: var(--cor-texto-secundario); cursor: pointer; border-radius: 8px; }
+.empty-slot:hover { background-color: var(--cor-fundo-cartao); }
+
+.blocked-slot {
+    flex-grow: 1;
+    background-color: var(--cor-bloqueio);
+    border-left: 4px solid var(--cor-texto-secundario);
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--cor-texto-secundario);
+    font-style: italic;
+}
+.blocked-slot:hover {
+    filter: brightness(1.2);
+}
+
+.slot-action-menu {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--cor-fundo-cartao);
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.slot-action-menu button {
+    background: none;
+    border: none;
+    color: var(--cor-texto-principal);
+    padding: 12px 20px;
+    font-family: var(--font-principal);
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--cor-borda);
+}
+.slot-action-menu button:last-child {
+    border-bottom: none;
+}
+.slot-action-menu button:hover {
+    background-color: var(--cor-primaria);
+    color: #fff;
+}
+.slot-action-menu button i {
+    width: 20px;
+    text-align: center;
+}
+
+#client-manager-list { margin-top: 20px; }
+.client-list-item { display: flex; justify-content: space-between; align-items: center; padding: 20px; background-color: var(--cor-fundo-painel); border: 1px solid var(--cor-borda); border-radius: 8px; margin-bottom: 10px; cursor: pointer; transition: border-color 0.2s, background-color 0.2s; }
+.client-list-item:hover { border-color: var(--cor-primaria); background-color: var(--cor-fundo-cartao); }
+.client-list-item strong { font-size: 1.1rem; }
+.client-list-item span { color: var(--cor-texto-secundario); }
+.client-list-item i { color: var(--cor-texto-secundario); }
+.report-box { background-color: var(--cor-fundo-painel); padding: 25px; border-radius: 12px; border: 1px solid var(--cor-borda); }
+.date-range-picker { display: flex; gap: 20px; margin-bottom: 20px; }
+.date-range-picker > div { flex: 1; }
+.revenue-display { margin-top: 20px; }
+#revenue-chart { max-height: 300px; margin-top: 20px; }
+
+/* --- Componentes Reutilizáveis --- */
+.input-field { background-color: var(--cor-fundo-input); border: 1px solid var(--cor-borda); color: var(--cor-texto-principal); border-radius: 8px; padding: 12px 15px; font-size: 1rem; font-family: var(--font-principal); width: 100%; }
+.input-field:focus { outline: none; border-color: var(--cor-primaria); box-shadow: 0 0 0 3px var(--cor-primaria-suave); }
+.btn-primary { background-color: var(--cor-primaria); color: #fff; border: none; border-radius: 8px; padding: 12px 25px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background-color 0.2s; display: inline-flex; align-items: center; gap: 8px; width: 100%; justify-content: center; }
+.btn-primary:hover { filter: brightness(1.1); }
+.btn-secondary { background-color: transparent; border: 1px solid var(--cor-borda); color: var(--cor-texto-principal); border-radius: 8px; padding: 12px 25px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.btn-secondary:hover { background-color: var(--cor-fundo-cartao); border-color: var(--cor-texto-principal); }
+.btn-danger { background-color: transparent; border: 1px solid var(--cor-perigo); color: var(--cor-perigo); border-radius: 8px; padding: 12px 25px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.btn-danger:hover { background-color: var(--cor-perigo-suave); }
+
+/* --- Modais --- */
+#modal-backdrop, #client-profile-modal-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); display: flex; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(5px); }
+#modal-content, #client-profile-modal-content { background-color: var(--cor-fundo-painel); border-radius: 12px; width: 90%; max-width: 500px; border: 1px solid var(--cor-borda); box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: flex; flex-direction: column; max-height: 90vh; }
+.modal-header { padding: 20px 30px; border-bottom: 1px solid var(--cor-borda); flex-shrink: 0; /* ✅ Impede que o cabeçalho encolha */ }
+.modal-header h3 { font-size: 1.3rem; }
+.modal-body { padding: 30px; display: flex; flex-direction: column; gap: 20px; overflow-y: auto; /* ✅ Garante a rolagem do conteúdo */ }
+.modal-body .input-group { margin-bottom: 0; }
+.modal-body .input-group label { margin-bottom: 8px; font-size: 0.9rem; color: var(--cor-texto-secundario); font-weight: 500; }
+.modal-body .input-field { margin-bottom: 0; }
+
+.modal-footer {
+    padding: 20px 30px;
+    border-top: 1px solid var(--cor-borda);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    flex-shrink: 0; /* ✅ Impede que o rodapé encolha */
+}
+.modal-footer-actions {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+.modal-footer button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    width: auto;
+    border-radius: 8px;
+    flex-shrink: 1;
+}
+
+/* --- REDESIGN DO CARD 'PRÓXIMOS AGENDAMENTOS' --- */
+.appointment-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: var(--cor-fundo-cartao);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--cor-primaria);
+}
+.appointment-time-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-primaria-suave);
+    border-radius: 8px;
+    padding: 10px;
+    min-width: 75px;
+    text-align: center;
+    flex-shrink: 0;
+}
+.appointment-time-block .time { font-size: 1.4rem; font-weight: 700; color: var(--cor-primaria); }
+.appointment-time-block .date { font-size: 0.85rem; color: var(--cor-texto-secundario); }
+.appointment-details-block { flex-grow: 1; display: flex; justify-content: space-between; align-items: center; gap: 10px; min-width: 0; }
+.appointment-details-block .info { display: flex; flex-direction: column; flex-grow: 1; min-width: 0; }
+.appointment-details-block .client-name { font-size: 1.0rem; font-weight: 600; color: var(--cor-texto-principal); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.appointment-details-block .service-name { font-size: 0.85rem; color: var(--cor-texto-secundario); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.appointment-card .actions { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.appointment-card .actions button,
+.appointment-card .actions .reminder-btn {
+    background: transparent;
+    border: none;
+    color: var(--cor-texto-secundario);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+.appointment-card .actions .profile-btn:hover { color: var(--cor-primaria); background-color: var(--cor-primaria-suave); }
+.appointment-card .actions .delete-btn:hover { color: var(--cor-perigo); background-color: var(--cor-perigo-suave); }
+.appointment-card .actions .reminder-btn { color: var(--cor-sucesso); }
+.appointment-card .actions .reminder-btn:hover { background-color: var(--cor-sucesso-suave); }
+
+/* --- ESTILOS PARA HISTÓRICO DO CLIENTE --- */
+#client-history-container {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--cor-borda);
+}
+#client-history-container h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+.client-history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    padding: 10px;
+    background-color: var(--cor-fundo-input);
+}
+.client-history-list li {
+    padding: 8px 5px;
+    border-bottom: 1px solid var(--cor-borda);
+    font-size: 0.9rem;
+}
+.client-history-list li:last-child {
+    border-bottom: none;
+}
+.client-history-summary {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: var(--cor-primaria-suave);
+    border: 1px solid var(--cor-primaria);
+    border-radius: 8px;
+    font-weight: 500;
+    line-height: 1.6;
+}
+/* ✅ Estilo para o novo botão de limpar histórico */
+#clear-history-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px 20px; /* Um pouco menor que os botões principais */
+    font-size: 0.9rem;
+}
+
+
+/* --- Utilitários --- */
+.hidden { display: none !important; }
+.loading-spinner { width: 30px; height: 30px; border: 4px solid var(--cor-borda); border-top-color: var(--cor-primaria); border-radius: 50%; animation: spin 1s linear infinite; margin: 20px auto; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    .sidebar { width: 80px; }
+    .sidebar span { display: none; }
+    .menu-item, #logout-button { justify-content: center; margin: 5px; }
+    .menu-item i, #logout-button i { margin: 0; }
+    .main-content { padding: 20px; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .date-range-picker { flex-direction: column; }
+}
+
+/* FIM DO ARQUIVO */
